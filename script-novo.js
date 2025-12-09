@@ -169,6 +169,28 @@
     }
 
     // ============================================
+    // LER MAIS - OBJETIVOS
+    // ============================================
+    function initLerMais() {
+        const lerMaisButtons = document.querySelectorAll('.ler-mais-btn');
+        
+        lerMaisButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                const card = this.closest('.objetivo-card');
+                const isExpanded = card.classList.contains('expanded');
+                
+                if (isExpanded) {
+                    card.classList.remove('expanded');
+                    this.textContent = 'Ler mais';
+                } else {
+                    card.classList.add('expanded');
+                    this.textContent = 'Ler menos';
+                }
+            });
+        });
+    }
+
+    // ============================================
     // SMOOTH SCROLL PARA LINKS
     // ============================================
     function initSmoothScroll() {
@@ -270,6 +292,7 @@
         initScrollAnimations();
         initSmoothScroll();
         initParallax();
+        initLerMais();
         
         // Cursor effect apenas em desktop
         if (window.innerWidth > 768) {
